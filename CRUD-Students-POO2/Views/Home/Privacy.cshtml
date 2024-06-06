@@ -1,0 +1,47 @@
+﻿@model List<StudentModel>
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+    int numero = 0;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+<h1>Lista de Estudiantes</h1>
+@* <a class="btn btn-outline-primary" asp-action="ProductAdd" asp-asp-controller="Product">Agregar Producto</a> *@
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Tetra</th>
+            <th scope="col">Cuota</th>
+
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+        {
+            numero++;
+        }
+            <tr>
+                <th scope="row">@numero</th>
+                <td>@student.Name</td>
+                <td>@student.LastName</td>
+                <td>@student.Tetra</td>
+                <td>@student.Cuota</td>
+                <td>
+                    <a class="btn btn-outline-info" asp-action="ProductEdit" asp-controller="Product" asp-route-id="@student.Id">Editar</a>
+                    <a class="btn btn-outline-danger" asp-action="ProductDeleted" asp-controller="Product" asp-route-id="@student.Id">Borrar</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
